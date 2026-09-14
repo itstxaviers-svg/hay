@@ -1,5 +1,5 @@
 const endpoint = 'http://127.0.0.1:9223';
-const appUrl = 'http://127.0.0.1:4173/hay/';
+const appUrl = process.argv[2] ?? 'http://127.0.0.1:4173/hay/';
 
 const pages = await (await fetch(`${endpoint}/json/list`)).json();
 const page = pages.find((item) => item.type === 'page');
@@ -22,7 +22,10 @@ socket.addEventListener('message', (event) => {
     message.error ? reject(new Error(message.error.message)) : resolve(message.result);
   }
   if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails.text);
-  if (message.method === 'Log.entryAdded' && message.params.entry.level === 'error') errors.push(message.params.entry.text);
+  if (message.method === 'Log.entryAdded' && message.params.entry.level === 'error') {
+    const entry = message.params.entry;
+    errors.push(`${entry.text}${entry.url ? ` (${entry.url})` : ''}`);
+  }
 });
 
 function send(method, params = {}) {
