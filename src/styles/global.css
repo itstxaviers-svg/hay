@@ -246,7 +246,6 @@ fieldset legend { padding: 17px 0 9px; }
     var(--emotion-world);
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   isolation: isolate;
 }
 .emotion-world::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 34%, rgba(255,235,178,.2), transparent 34%), linear-gradient(90deg, rgba(17,22,73,.18), transparent 25% 75%, rgba(17,22,73,.18)); pointer-events: none; }

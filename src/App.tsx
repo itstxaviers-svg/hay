@@ -20,6 +20,33 @@ const gameInfo: Record<GameId, { title: string; number: string; subtitle: string
 const defaults: Settings = { sound: true, rounds: 10, teamMode: false, hardMode: false };
 const emptyScores: Scores = { banana: 0, coconut: 0 };
 const emotionWorld = `${uiAssets}/emotion-world.jpg`;
+const preloadedGames = new Set<GameId>();
+
+function preloadGameAssets(id: GameId) {
+  if (preloadedGames.has(id)) return;
+  preloadedGames.add(id);
+
+  emotions.forEach((emotion) => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.src = emotion.image;
+    void image.decode().catch(() => undefined);
+    const audio = new Audio(emotion.audio);
+    audio.preload = 'auto';
+  });
+
+  if (id === 'rescue') {
+    window.setTimeout(() => {
+      emotions.forEach((emotion) => {
+        [1, 2, 3].forEach((variant) => {
+          const situation = new Image();
+          situation.decoding = 'async';
+          situation.src = `${import.meta.env.BASE_URL}assets/situations/${emotion.id}-${variant}.jpg`;
+        });
+      });
+    }, 300);
+  }
+}
 
 function loadSettings(): Settings {
   try {
@@ -41,21 +68,8 @@ export default function App() {
     localStorage.setItem('hay-settings', JSON.stringify(settings));
   }, [settings]);
 
-  useEffect(() => {
-    emotions.forEach((emotion) => {
-      const image = new Image();
-      image.src = emotion.image;
-      void image.decode().catch(() => undefined);
-      const audio = new Audio(emotion.audio);
-      audio.preload = 'auto';
-      [1, 2, 3].forEach((variant) => {
-        const situation = new Image();
-        situation.src = `${import.meta.env.BASE_URL}assets/situations/${emotion.id}-${variant}.jpg`;
-      });
-    });
-  }, []);
-
   const startGame = (id: GameId) => {
+    preloadGameAssets(id);
     setGame(id);
     setScores(emptyScores);
     setProgress({ round: 1, streak: 0 });
@@ -108,7 +122,7 @@ export default function App() {
               <span className="card-world-tag">{id === 'snap' ? 'Quick spark' : id === 'missing' ? 'Memory vault' : 'Story portal'}</span>
               <div className="menu-art">
                 <span className="character-glow" aria-hidden="true" />
-                <img className={`menu-character character-${id}`} src={info.character} alt="" />
+                <img className={`menu-character character-${id}`} src={info.character} alt="" decoding="async" fetchPriority="high" />
               </div>
               <div className="menu-card-copy"><h2>{info.title}</h2><p>{info.subtitle}</p></div>
               <button className="play-button" onClick={() => startGame(id)}>Play <span>▶</span></button>
