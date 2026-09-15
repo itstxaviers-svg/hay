@@ -45,6 +45,7 @@ export default function App() {
     emotions.forEach((emotion) => {
       const image = new Image();
       image.src = emotion.image;
+      void image.decode().catch(() => undefined);
       const audio = new Audio(emotion.audio);
       audio.preload = 'auto';
       [1, 2, 3].forEach((variant) => {
