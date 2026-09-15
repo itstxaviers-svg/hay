@@ -10,15 +10,16 @@ import type { Scores, Settings } from './types';
 type GameId = 'snap' | 'missing' | 'rescue';
 type View = 'menu' | 'settings' | 'game' | 'end';
 
-const gameInfo: Record<GameId, { title: string; number: string; subtitle: string; icon: string; color: string }> = {
-  snap: { title: 'Mood Snap', number: '01', subtitle: 'See it. Say it. Snap!', icon: '⚡', color: 'yellow' },
-  missing: { title: "What's Missing?", number: '02', subtitle: 'Look, remember, speak!', icon: '☁️', color: 'blue' },
-  rescue: { title: 'Monkey Rescue', number: '03', subtitle: 'Spot the clue. Name the feeling!', icon: '🍌', color: 'coral' },
+const uiAssets = `${import.meta.env.BASE_URL}assets/ui`;
+const gameInfo: Record<GameId, { title: string; number: string; subtitle: string; character: string; color: string }> = {
+  snap: { title: 'Mood Snap', number: '01', subtitle: 'See it. Say it. Snap!', character: `${uiAssets}/menu-characters/mood-snap.png`, color: 'yellow' },
+  missing: { title: "What's Missing?", number: '02', subtitle: 'Look, remember, speak!', character: `${uiAssets}/menu-characters/memory-vault.png`, color: 'blue' },
+  rescue: { title: 'Monkey Rescue', number: '03', subtitle: 'Spot the clue. Name the feeling!', character: `${uiAssets}/menu-characters/story-portal.png`, color: 'coral' },
 };
 
 const defaults: Settings = { sound: true, rounds: 10, teamMode: false, hardMode: false };
 const emptyScores: Scores = { banana: 0, coconut: 0 };
-const emotionWorld = `${import.meta.env.BASE_URL}assets/ui/emotion-world.png`;
+const emotionWorld = `${uiAssets}/emotion-world.png`;
 
 function loadSettings(): Settings {
   try {
@@ -95,7 +96,10 @@ export default function App() {
             <article className={`menu-card ${info.color}`} key={id}>
               <span className="card-number">{info.number}</span>
               <span className="card-world-tag">{id === 'snap' ? 'Quick spark' : id === 'missing' ? 'Memory vault' : 'Story portal'}</span>
-              <div className="menu-art"><span>{info.icon}</span><div className={`mini-monkey mini-${id}`}><i /><b /></div></div>
+              <div className="menu-art">
+                <span className="character-glow" aria-hidden="true" />
+                <img className={`menu-character character-${id}`} src={info.character} alt="" />
+              </div>
               <div className="menu-card-copy"><h2>{info.title}</h2><p>{info.subtitle}</p></div>
               <button className="play-button" onClick={() => startGame(id)}>Play <span>▶</span></button>
             </article>

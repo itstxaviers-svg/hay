@@ -55,7 +55,8 @@ await send('Page.reload');
 await wait(800);
 
 assert(await evaluate(`document.querySelectorAll('.play-button').length`) === 3, 'main menu shows three games');
-assert(await evaluate(`document.querySelectorAll('img').length`) === 0, 'menu renders without broken image elements');
+assert(await evaluate(`document.querySelectorAll('.menu-character').length`) === 3, 'menu shows three generated characters');
+assert(await evaluate(`[...document.querySelectorAll('.menu-character')].every((image) => image.complete && image.naturalWidth > 0)`), 'menu characters load without broken images');
 
 await evaluate(`document.querySelectorAll('.play-button')[0].click()`);
 await wait(2200);
