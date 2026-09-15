@@ -19,7 +19,7 @@ const gameInfo: Record<GameId, { title: string; number: string; subtitle: string
 
 const defaults: Settings = { sound: true, rounds: 10, teamMode: false, hardMode: false };
 const emptyScores: Scores = { banana: 0, coconut: 0 };
-const emotionWorld = `${uiAssets}/emotion-world.png`;
+const emotionWorld = `${uiAssets}/emotion-world.jpg`;
 
 function loadSettings(): Settings {
   try {
