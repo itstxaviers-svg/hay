@@ -47,6 +47,10 @@ export default function App() {
       image.src = emotion.image;
       const audio = new Audio(emotion.audio);
       audio.preload = 'auto';
+      [1, 2, 3].forEach((variant) => {
+        const situation = new Image();
+        situation.src = `${import.meta.env.BASE_URL}assets/situations/${emotion.id}-${variant}.jpg`;
+      });
     });
   }, []);
 
