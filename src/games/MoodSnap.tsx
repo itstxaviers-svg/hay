@@ -27,7 +27,7 @@ export default function MoodSnap({ settings, onFinish, onProgress }: GameProps) 
   const reveal = () => {
     if (countdown > 0 || revealed) return;
     setRevealed(true);
-    speakPhrase(emotion.phrase, settings.sound);
+    speakPhrase(emotion.phrase, settings.sound, emotion.audio);
   };
   const next = () => {
     if (round >= settings.rounds) {

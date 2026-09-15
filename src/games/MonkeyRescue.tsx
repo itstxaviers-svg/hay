@@ -66,7 +66,7 @@ export default function MonkeyRescue({ settings, onFinish, onProgress }: GamePro
   const reveal = () => {
     if (intro || revealed) return;
     setRevealed(true);
-    speakPhrase(emotion.phrase, settings.sound);
+    speakPhrase(emotion.phrase, settings.sound, emotion.audio);
   };
   const next = () => {
     if (intro) { setIntro(false); return; }

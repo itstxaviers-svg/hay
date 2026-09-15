@@ -46,7 +46,7 @@ export default function WhatsMissing({ settings, onFinish, onProgress }: GamePro
   const reveal = () => {
     if (phase !== 'guess') return;
     setPhase('revealed');
-    speakPhrase(current.answer.phrase, settings.sound);
+    speakPhrase(current.answer.phrase, settings.sound, current.answer.audio);
   };
   const next = () => {
     if (round >= settings.rounds) {

@@ -11,6 +11,7 @@ const preferredVoices = [
 
 const noveltyVoices = /albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|trinoids|whisper|wobble|zarvox/i;
 let speechTimer: number | undefined;
+let currentAudio: HTMLAudioElement | null = null;
 
 function chooseEnglishVoice(voices: SpeechSynthesisVoice[]) {
   const englishVoices = voices.filter((voice) => voice.lang.toLowerCase().startsWith('en') && !noveltyVoices.test(voice.name));
@@ -27,8 +28,8 @@ function chooseEnglishVoice(voices: SpeechSynthesisVoice[]) {
   })[0] ?? null;
 }
 
-export function speakPhrase(phrase: string, enabled: boolean) {
-  if (!enabled || !('speechSynthesis' in window)) return;
+function speakWithSystemVoice(phrase: string) {
+  if (!('speechSynthesis' in window)) return;
   window.clearTimeout(speechTimer);
   window.speechSynthesis.cancel();
 
@@ -41,4 +42,24 @@ export function speakPhrase(phrase: string, enabled: boolean) {
     utterance.volume = 1;
     window.speechSynthesis.speak(utterance);
   }, 50);
+}
+
+export function speakPhrase(phrase: string, enabled: boolean, audioSrc?: string) {
+  if (!enabled) return;
+  currentAudio?.pause();
+  currentAudio = null;
+  window.speechSynthesis?.cancel();
+
+  if (!audioSrc) {
+    speakWithSystemVoice(phrase);
+    return;
+  }
+
+  const audio = new Audio(audioSrc);
+  currentAudio = audio;
+  audio.volume = 1;
+  audio.addEventListener('ended', () => {
+    if (currentAudio === audio) currentAudio = null;
+  }, { once: true });
+  audio.play().catch(() => speakWithSystemVoice(phrase));
 }

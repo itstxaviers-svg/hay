@@ -42,7 +42,12 @@ export default function App() {
   }, [settings]);
 
   useEffect(() => {
-    emotions.forEach((emotion) => { const image = new Image(); image.src = emotion.image; });
+    emotions.forEach((emotion) => {
+      const image = new Image();
+      image.src = emotion.image;
+      const audio = new Audio(emotion.audio);
+      audio.preload = 'auto';
+    });
   }, []);
 
   const startGame = (id: GameId) => {
