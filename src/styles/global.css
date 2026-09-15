@@ -169,7 +169,7 @@ fieldset legend { padding: 17px 0 9px; }
 .rescue-intro p { font-size: clamp(18px, 2vw, 26px); color: var(--muted); font-weight: 800; margin: 0 0 32px; }
 .rescue-stage { background: radial-gradient(circle at 50% 48%, color-mix(in srgb, var(--blue) 20%, white) 0 20%, transparent 50%); }
 .rescue-prompt { font-size: clamp(23px, 3vw, 43px); margin: 2px 0 14px; letter-spacing: -.03em; text-align: center; }
-.situation-card { width: min(900px, 90vw); height: min(52vh, 470px); border: 6px solid rgba(255,255,255,.92); border-radius: 38px; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px clamp(24px, 4vw, 48px); position: relative; overflow: hidden; transition: height 220ms ease, width 220ms ease, padding 220ms ease; isolation: isolate; }
+.situation-card { width: min(960px, 92vw); height: min(58vh, 540px); border: 6px solid rgba(255,255,255,.92); border-radius: 38px; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; position: relative; overflow: hidden; transition: height 220ms ease, width 220ms ease, padding 220ms ease; isolation: isolate; }
 .situation-card::before, .situation-card::after { content: ''; position: absolute; z-index: -1; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.75), rgba(255,255,255,.08) 65%, transparent 68%); left: -90px; top: -105px; }
 .situation-card::after { width: 180px; height: 180px; left: auto; top: auto; right: -55px; bottom: -70px; }
 .situation-hungry { background: linear-gradient(145deg, #ffe49a, #fff2bd); }
@@ -185,22 +185,22 @@ fieldset legend { padding: 17px 0 9px; }
 .situation-variants { display: flex; gap: 7px; padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,.55); }
 .situation-variants i { width: 8px; height: 8px; border-radius: 50%; background: rgba(46,39,83,.2); transition: width 180ms, background 180ms; }
 .situation-variants i.active { width: 24px; border-radius: 99px; background: #5f4bc4; box-shadow: 0 0 12px rgba(95,75,196,.45); }
-.situation-card h2 { margin: -2px 0 2px; color: #29234e; font-size: clamp(24px, 2.4vw, 36px); line-height: 1; letter-spacing: -.035em; text-align: center; position: relative; z-index: 1; }
-.situation-icons { width: 100%; display: flex; align-items: stretch; justify-content: center; gap: clamp(18px, 4vw, 50px); position: relative; z-index: 1; }
-.clue-tile { width: clamp(118px, 12vw, 158px); aspect-ratio: 1 / .95; margin: 0; padding: 10px 8px 9px; border-radius: 28px; background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(255,255,255,.58)); border: 3px solid rgba(255,255,255,.9); box-shadow: 0 14px 28px rgba(48,39,91,.14), inset 0 2px rgba(255,255,255,.9); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; animation: clueFloat 2.4s ease-in-out infinite; }
-.clue-tile::before { content: ''; position: absolute; inset: 7px; border-radius: 19px; border: 1px solid rgba(96,77,160,.09); pointer-events: none; }
-.clue-tile:nth-child(2) { animation-delay: -.8s; }
-.clue-tile:nth-child(3) { animation-delay: -1.6s; }
-.clue-emoji { display: grid; place-items: center; min-height: 64%; font-size: clamp(54px, 6vw, 86px); filter: drop-shadow(0 8px 8px rgba(50,37,91,.14)); }
-.clue-tile figcaption { color: #4e4967; font-size: clamp(10px, 1vw, 13px); line-height: 1.1; font-weight: 900; text-align: center; }
-.situation-card > p { max-width: 720px; margin: 2px 0 0; padding: 11px 20px; border: 1px solid rgba(255,255,255,.8); border-radius: 17px; background: rgba(255,255,255,.48); color: #302b50; box-shadow: inset 0 1px rgba(255,255,255,.75); font-size: clamp(16px, 1.7vw, 22px); line-height: 1.2; font-weight: 900; text-align: center; position: relative; z-index: 1; }
+.situation-visual { width: 100%; flex: 1; min-height: 0; border-radius: 27px; overflow: hidden; position: relative; z-index: 1; background: rgba(255,255,255,.5); box-shadow: 0 14px 32px rgba(45,35,87,.2), inset 0 0 0 2px rgba(255,255,255,.75); }
+.situation-visual::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 52%, rgba(21,17,55,.74) 100%); box-shadow: inset 0 0 0 2px rgba(255,255,255,.48); border-radius: inherit; }
+.situation-visual img { width: 100%; height: 100%; display: block; object-fit: cover; animation: sceneReveal 500ms ease-out both; }
+.story-clues { position: absolute; z-index: 2; left: 16px; right: 16px; bottom: 14px; display: flex; justify-content: center; gap: 9px; }
+.story-clues span { min-width: 0; padding: 7px 12px 7px 8px; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,.42); border-radius: 999px; color: white; background: rgba(29,24,66,.56); box-shadow: 0 6px 18px rgba(15,12,48,.2), inset 0 1px rgba(255,255,255,.28); backdrop-filter: blur(10px); font-size: clamp(10px, 1vw, 13px); font-weight: 900; white-space: nowrap; }
+.story-clues b { display: grid; place-items: center; width: 27px; height: 27px; flex: none; border-radius: 50%; background: rgba(255,255,255,.9); font-size: 18px; }
+.situation-copy { width: 100%; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px; padding: 2px 8px 0; position: relative; z-index: 1; }
+.situation-copy h2 { margin: 0; color: #29234e; font-size: clamp(21px, 2.1vw, 31px); line-height: 1; letter-spacing: -.035em; white-space: nowrap; }
+.situation-copy p { margin: 0; padding: 9px 15px; border: 1px solid rgba(255,255,255,.8); border-radius: 15px; background: rgba(255,255,255,.48); color: #302b50; font-size: clamp(14px, 1.35vw, 18px); line-height: 1.15; font-weight: 900; text-align: center; }
 .situation-card.compact { width: min(700px, 84vw); height: 92px; min-height: 92px; padding: 9px 18px; flex-direction: row; gap: 16px; border-radius: 24px; }
-.situation-card.compact .situation-topline, .situation-card.compact h2 { display: none; }
-.situation-card.compact .situation-icons { gap: 8px; }
-.situation-card.compact .clue-tile { width: 60px; padding: 4px; border-radius: 15px; border-width: 2px; animation: none; }
-.situation-card.compact .clue-tile::before, .situation-card.compact figcaption { display: none; }
-.situation-card.compact .clue-emoji { min-height: 0; font-size: 34px; }
-.situation-card.compact > p { margin: 0; padding: 8px 12px; font-size: 15px; text-align: left; }
+.situation-card.compact .situation-topline { display: none; }
+.situation-card.compact .situation-visual { width: 140px; height: 66px; flex: none; border-radius: 15px; }
+.situation-card.compact .situation-visual::after, .situation-card.compact .story-clues { display: none; }
+.situation-card.compact .situation-copy { display: block; padding: 0; }
+.situation-card.compact .situation-copy h2 { margin-bottom: 5px; font-size: 18px; }
+.situation-card.compact .situation-copy p { padding: 0; border: 0; background: transparent; font-size: 13px; text-align: left; }
 .thinking-dots { display: flex; gap: 11px; margin: 24px 0 5px; }
 .thinking-dots i { width: 14px; height: 14px; background: #c8c1b4; border-radius: 50%; animation: thinkingDot 1s ease-in-out infinite; }
 .thinking-dots i:nth-child(2) { animation-delay: .15s; }
@@ -233,6 +233,7 @@ fieldset legend { padding: 17px 0 9px; }
 @keyframes cloudSweep { from { opacity: 0; transform: translateX(-80px) scale(.7); } 45% { opacity: 1; } to { opacity: 0; transform: translateX(80px) scale(1.15); } }
 @keyframes twinkle { 50% { transform: scale(1.5) rotate(30deg); opacity: .45; } }
 @keyframes clueFloat { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+@keyframes sceneReveal { from { opacity: 0; transform: scale(1.035); } to { opacity: 1; transform: scale(1); } }
 @keyframes thinkingDot { 0%,100% { transform: translateY(0); opacity: .45; } 50% { transform: translateY(-9px); opacity: 1; } }
 @keyframes bananaFly { 0% { transform: translate(-10vw, 20vh) rotate(-40deg) scale(.4); opacity: 0; } 40% { opacity: 1; } 100% { transform: translate(42vw, 5vh) rotate(340deg) scale(1); opacity: 0; } }
 @keyframes confetti { from { transform: translate(-50%,-50%) rotate(0) translateX(0); opacity: 1; } to { transform: translate(-50%,-50%) rotate(var(--angle)) translateX(clamp(130px, 25vw, 360px)) rotate(220deg); opacity: 0; } }
@@ -332,13 +333,18 @@ fieldset legend { padding: 17px 0 9px; }
   .emotion-card.small { width: min(42vw, 190px); height: min(21vh, 190px); }
   .memory-grid { gap: 9px; }
   .memory-grid.count-5 .emotion-card.small { width: min(29vw, 150px); height: min(18vh, 160px); }
-  .situation-card { width: 94vw; padding: 16px; }
-  .situation-icons { gap: 8px; }
-  .clue-tile { width: min(27vw, 110px); border-radius: 20px; padding-inline: 5px; }
-  .clue-emoji { font-size: clamp(42px, 13vw, 64px); }
-  .situation-card h2 { font-size: 22px; }
+  .situation-card { width: 94vw; height: min(57vh, 500px); padding: 10px; border-radius: 27px; border-width: 4px; }
+  .situation-visual { border-radius: 20px; }
+  .story-clues { left: 8px; right: 8px; bottom: 8px; gap: 4px; }
+  .story-clues span { padding: 5px 7px 5px 5px; gap: 3px; font-size: 8px; }
+  .story-clues b { width: 22px; height: 22px; font-size: 14px; }
+  .situation-copy { display: block; padding: 3px 4px; }
+  .situation-copy h2 { margin-bottom: 6px; font-size: 20px; text-align: center; }
+  .situation-copy p { padding: 7px 9px; font-size: 12px; }
   .situation-card.compact { width: 94vw; height: 78px; min-height: 78px; }
-  .situation-card.compact > p { display: none; }
+  .situation-card.compact .situation-visual { width: 108px; height: 58px; }
+  .situation-card.compact .situation-copy h2 { font-size: 15px; }
+  .situation-card.compact .situation-copy p { display: none; }
   .rescue-reveal { gap: 13px; }
   .rescue-answer-text { font-size: clamp(32px, 9vw, 48px); }
   .challenge-badge { top: 12px; right: 10px; font-size: 11px; }

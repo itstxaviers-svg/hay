@@ -8,6 +8,8 @@ import { speakPhrase } from '../utils/speech';
 import type { GameProps } from '../types';
 
 type Situation = { title: string; clues: [string, string][]; hint: string };
+const situationAsset = (emotion: EmotionId, index: number) =>
+  `${import.meta.env.BASE_URL}assets/situations/${emotion}-${index + 1}.jpg`;
 
 const situations: Record<EmotionId, Situation[]> = {
   hungry: [
@@ -99,16 +101,18 @@ export default function MonkeyRescue({ settings, onFinish, onProgress }: GamePro
             {[0, 1, 2].map((index) => <i className={index === situationIndex ? 'active' : ''} key={index} />)}
           </div>
         </div>
-        <h2>{situation.title}</h2>
-        <div className="situation-icons" aria-label={situation.hint}>
-          {situation.clues.map(([icon, label], index) => (
-            <figure className="clue-tile" key={`${icon}-${index}`}>
-              <span className="clue-emoji">{icon}</span>
-              <figcaption>{label}</figcaption>
-            </figure>
-          ))}
+        <div className="situation-visual">
+          <img src={situationAsset(emotion.id, situationIndex)} alt={situation.title} />
+          <div className="story-clues" aria-label={situation.hint}>
+            {situation.clues.map(([icon, label]) => (
+              <span key={label}><b>{icon}</b>{label}</span>
+            ))}
+          </div>
         </div>
-        <p>{situation.hint}</p>
+        <div className="situation-copy">
+          <h2>{situation.title}</h2>
+          <p>{situation.hint}</p>
+        </div>
       </div>
       {!revealed && <div className="thinking-dots" aria-hidden="true"><i /><i /><i /></div>}
       {revealed && (
