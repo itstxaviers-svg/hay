@@ -102,7 +102,7 @@ export default function MonkeyRescue({ settings, onFinish, onProgress }: GamePro
           </div>
         </div>
         <div className="situation-visual">
-          <img src={situationAsset(emotion.id, situationIndex)} alt={situation.title} />
+          <img src={situationAsset(emotion.id, situationIndex)} alt={situation.title} decoding="async" fetchPriority="high" />
           <div className="story-clues" aria-label={situation.hint}>
             {situation.clues.map(([icon, label]) => (
               <span key={label}><b>{icon}</b>{label}</span>

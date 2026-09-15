@@ -36,15 +36,17 @@ function preloadGameAssets(id: GameId) {
   });
 
   if (id === 'rescue') {
-    window.setTimeout(() => {
-      emotions.forEach((emotion) => {
-        [1, 2, 3].forEach((variant) => {
+    const situationQueue = emotions.flatMap((emotion) =>
+      [1, 2, 3].map((variant) => ({ emotion, variant })),
+    );
+    situationQueue.forEach(({ emotion, variant }, index) => {
+      window.setTimeout(() => {
           const situation = new Image();
           situation.decoding = 'async';
+          situation.fetchPriority = 'low';
           situation.src = `${import.meta.env.BASE_URL}assets/situations/${emotion.id}-${variant}.jpg`;
-        });
-      });
-    }, 300);
+      }, 900 + index * 90);
+    });
   }
 }
 

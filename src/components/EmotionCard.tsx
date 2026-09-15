@@ -19,7 +19,7 @@ export default function EmotionCard({ emotion, size = 'large', hidden = false, s
   return (
     <div className={`emotion-card ${size}${selected ? ' selected' : ''}`} style={{ '--emotion-accent': emotion.accent } as React.CSSProperties}>
       {!failed ? (
-        <img src={emotion.image} alt={`Monkey feeling ${emotion.label.toLowerCase()}`} onError={() => setFailed(true)} draggable={false} />
+        <img src={emotion.image} alt={`Monkey feeling ${emotion.label.toLowerCase()}`} onError={() => setFailed(true)} draggable={false} decoding="async" fetchPriority="high" />
       ) : (
         <div className={`monkey-fallback monkey-${emotion.id}`} role="img" aria-label={`Monkey feeling ${emotion.label.toLowerCase()}`}>
           <span className="fallback-ear left" />
