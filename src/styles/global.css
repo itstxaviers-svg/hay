@@ -231,6 +231,71 @@ fieldset legend { padding: 17px 0 9px; }
 @keyframes bananaFly { 0% { transform: translate(-10vw, 20vh) rotate(-40deg) scale(.4); opacity: 0; } 40% { opacity: 1; } 100% { transform: translate(42vw, 5vh) rotate(340deg) scale(1); opacity: 0; } }
 @keyframes confetti { from { transform: translate(-50%,-50%) rotate(0) translateX(0); opacity: 1; } to { transform: translate(-50%,-50%) rotate(var(--angle)) translateX(clamp(130px, 25vw, 360px)) rotate(220deg); opacity: 0; } }
 
+/* Emotion World — original cinematic animated-film theme */
+.emotion-world {
+  background-image:
+    linear-gradient(180deg, rgba(21, 23, 82, .18) 0%, rgba(38, 25, 92, .2) 45%, rgba(12, 15, 55, .72) 100%),
+    var(--emotion-world);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  isolation: isolate;
+}
+.emotion-world::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 34%, rgba(255,235,178,.2), transparent 34%), linear-gradient(90deg, rgba(17,22,73,.18), transparent 25% 75%, rgba(17,22,73,.18)); pointer-events: none; }
+.emotion-world .background-doodles span { color: white; opacity: .72; text-shadow: 0 0 18px currentColor; }
+.emotion-world .background-doodles span:nth-child(2) { color: #ff7a86; }
+.emotion-world .background-doodles span:nth-child(3), .emotion-world .background-doodles span:nth-child(5) { color: #77e7ff; }
+.memory-stream { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.memory-stream i { --hue: calc(var(--orb) * 31); position: absolute; width: clamp(16px, 2.2vw, 34px); aspect-ratio: 1; left: calc(3% + var(--orb) * 9.2%); top: calc(12% + var(--orb) * 4%); border-radius: 50%; background: radial-gradient(circle at 32% 27%, white 0 8%, hsl(var(--hue) 95% 72%) 21%, hsl(calc(var(--hue) + 25) 85% 51%) 70%); border: 1px solid rgba(255,255,255,.8); box-shadow: 0 0 12px white, 0 0 30px hsl(var(--hue) 100% 68%); opacity: .82; animation: memoryDrift calc(4s + var(--orb) * .25s) ease-in-out infinite alternate; }
+.memory-stream i:nth-child(3n) { top: auto; bottom: 8%; }
+.memory-stream i:nth-child(4n) { top: 40%; }
+.home-header { color: white; text-shadow: 0 2px 12px rgba(17,16,67,.5); }
+.brand-mark { gap: 12px; }
+.brand-mark > span { background: radial-gradient(circle at 32% 25%, #fff5ad, #ffd331 58%, #f49b22); color: #37245f; box-shadow: 0 7px 0 #dc7d25, 0 0 28px rgba(255,217,67,.7); }
+.brand-mark > div { display: grid; line-height: 1; }
+.brand-mark b { font-size: 18px; text-transform: uppercase; letter-spacing: .08em; }
+.brand-mark small { font-size: 10px; opacity: .78; text-transform: uppercase; letter-spacing: .13em; margin-top: 5px; }
+.settings-button { color: white; background: linear-gradient(145deg, rgba(255,255,255,.28), rgba(255,255,255,.12)); border: 1px solid rgba(255,255,255,.52); box-shadow: 0 10px 28px rgba(19,16,75,.28), inset 0 1px rgba(255,255,255,.6); backdrop-filter: blur(16px); text-shadow: 0 2px 8px rgba(22,17,75,.5); }
+.emotion-world .hero-copy { margin-top: clamp(18px, 3.8vh, 46px); margin-bottom: clamp(20px, 3vh, 36px); }
+.emotion-world .eyebrow { color: #fff1a8; text-shadow: 0 2px 10px rgba(64,36,98,.7); display: flex; justify-content: center; align-items: center; gap: 10px; }
+.emotion-world .eyebrow i { width: 7px; height: 7px; background: #ffd84a; border-radius: 50%; box-shadow: 0 0 14px #fff4a8; }
+.emotion-world .hero-copy h1 { color: white; text-shadow: 0 5px 0 rgba(46,32,100,.34), 0 12px 38px rgba(15,13,65,.48); }
+.emotion-world .hero-copy h1 span { color: transparent; background: linear-gradient(180deg, #fff4a3 0%, #ffd943 48%, #ff8f4e 100%); background-clip: text; -webkit-background-clip: text; filter: drop-shadow(0 5px 0 rgba(119,52,77,.26)); }
+.emotion-world .hero-copy h1 span::after { background: linear-gradient(90deg, #6af1ff, #f5a4ff, #fff18c); box-shadow: 0 0 15px rgba(154,232,255,.8); }
+.emotion-world .hero-copy > p:last-child { color: rgba(255,255,255,.92); text-shadow: 0 2px 13px rgba(26,18,78,.8); }
+.emotion-world .game-menu { max-width: 1280px; }
+.emotion-world .menu-card { background: linear-gradient(160deg, rgba(255,255,255,.95), rgba(246,242,255,.84)); border: 2px solid rgba(255,255,255,.78); box-shadow: 0 24px 60px rgba(16,14,72,.32), inset 0 1px white; backdrop-filter: blur(18px); }
+.emotion-world .menu-card:hover { transform: translateY(-9px) scale(1.015); box-shadow: 0 32px 70px rgba(15,13,73,.42), 0 0 35px color-mix(in srgb, var(--card-color) 42%, transparent); }
+.emotion-world .menu-art { border: 1px solid rgba(255,255,255,.8); background: radial-gradient(circle at 50% 105%, rgba(255,255,255,.75), transparent 42%), linear-gradient(145deg, color-mix(in srgb, var(--card-color) 78%, white), color-mix(in srgb, var(--card-deep) 75%, #815cc8)); box-shadow: inset 0 2px rgba(255,255,255,.75), inset 0 -12px 26px rgba(39,27,92,.14), 0 10px 20px rgba(34,25,83,.14); }
+.emotion-world .menu-art::before, .emotion-world .menu-art::after { box-shadow: inset 0 0 24px rgba(255,255,255,.55), 0 0 20px rgba(255,255,255,.35); }
+.emotion-world .menu-art > span { filter: drop-shadow(0 5px 2px rgba(42,24,85,.2)) drop-shadow(0 0 14px white); }
+.card-world-tag { position: absolute; z-index: 2; top: 19px; left: 50%; transform: translateX(-50%); padding: 5px 10px; border-radius: 99px; background: rgba(45,31,94,.76); color: white; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 1000; white-space: nowrap; box-shadow: 0 4px 14px rgba(25,18,69,.22); }
+.emotion-world .play-button { color: #24224f; background: linear-gradient(180deg, color-mix(in srgb, var(--card-color) 70%, white), var(--card-color)); box-shadow: 0 7px 0 var(--card-deep), 0 10px 22px color-mix(in srgb, var(--card-color) 35%, transparent), inset 0 2px rgba(255,255,255,.65); }
+.emotion-world .home-footer { color: rgba(255,255,255,.85); text-shadow: 0 2px 9px rgba(24,17,72,.85); }
+.emotion-world .home-footer i { background: #fff18c; box-shadow: 0 0 10px #fff18c; }
+
+.game-screen { background: radial-gradient(circle at 50% 8%, rgba(145,116,255,.36), transparent 28%), radial-gradient(circle at 8% 62%, rgba(67,217,255,.26), transparent 25%), radial-gradient(circle at 92% 70%, rgba(255,113,166,.25), transparent 25%), linear-gradient(145deg, #f8f3ff 0%, #fff8e9 48%, #eef8ff 100%); isolation: isolate; }
+.game-screen::before { content: ''; position: fixed; inset: 68px 0 0; z-index: -1; pointer-events: none; opacity: .38; background-image: radial-gradient(circle, #8c6fff 0 5px, transparent 6px), radial-gradient(circle, #ff91bb 0 3px, transparent 4px), radial-gradient(circle, #6ee7ff 0 4px, transparent 5px); background-size: 180px 180px, 240px 240px, 310px 310px; background-position: 10px 30px, 80px 110px, 150px 5px; animation: starField 18s linear infinite; }
+.round-header { color: white; background: linear-gradient(90deg, rgba(39,30,101,.94), rgba(75,49,137,.92), rgba(31,52,116,.94)); border-bottom: 1px solid rgba(255,255,255,.24); box-shadow: 0 8px 28px rgba(33,25,91,.2); }
+.round-header .icon-button { color: white; background: rgba(255,255,255,.17); border: 1px solid rgba(255,255,255,.26); box-shadow: inset 0 1px rgba(255,255,255,.3); }
+.mini-banana { color: #ffe35e; text-shadow: 0 0 12px #ffe35e; }
+.round-progress strong { color: white; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.18); }
+.streak { color: #fff09a; }
+.emotion-card { background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(244,239,255,.9)); border-color: rgba(255,255,255,.95); box-shadow: 0 22px 50px rgba(62,44,118,.2), 0 0 0 1px rgba(111,83,194,.1), inset 0 1px white; }
+.emotion-card.selected { border-color: #ffe75f; box-shadow: 0 24px 55px rgba(62,44,118,.24), 0 0 30px rgba(255,220,69,.7); }
+.primary-button { background: linear-gradient(180deg, #fff28d, #ffd337); box-shadow: 0 7px 0 #db9e16, 0 12px 28px rgba(225,163,25,.25), inset 0 2px rgba(255,255,255,.7); }
+.primary-button.coral { background: linear-gradient(180deg, #ff9fa2, #ff706e); box-shadow: 0 7px 0 #cc4c5a, 0 12px 28px rgba(225,83,96,.25), inset 0 2px rgba(255,255,255,.55); }
+.secondary-button { background: linear-gradient(180deg, white, #eee9ff); box-shadow: 0 6px 0 #c9bee8, 0 10px 24px rgba(71,50,128,.14); }
+.challenge-badge { color: white; background: linear-gradient(145deg, #6be6ff, #6577e9); box-shadow: 0 6px 0 #4a50b5, 0 0 25px rgba(88,207,255,.55); }
+.look-timer i { background: linear-gradient(90deg, #665fe7, #ff6e9c, #ffd84a); }
+.memory-answer { background: linear-gradient(135deg, #fff388, #ffd63c); box-shadow: 0 10px 28px rgba(178,121,24,.23), 0 0 24px rgba(255,226,73,.48); }
+.situation-card { box-shadow: 0 25px 60px rgba(50,37,110,.2), 0 0 0 1px rgba(255,255,255,.8); }
+.end-screen { background: radial-gradient(circle at 50% 35%, rgba(255,239,132,.75), transparent 22%), radial-gradient(circle at 15% 25%, rgba(100,229,255,.38), transparent 28%), radial-gradient(circle at 85% 72%, rgba(255,114,172,.35), transparent 26%), linear-gradient(145deg, #eee6ff, #fff7df 52%, #e9f7ff); }
+.end-card { border: 2px solid white; background: linear-gradient(155deg, rgba(255,255,255,.98), rgba(246,240,255,.92)); box-shadow: 0 30px 80px rgba(50,35,112,.28), 0 0 60px rgba(255,226,80,.2); }
+
+@keyframes memoryDrift { from { transform: translateY(-6px) scale(.88); } to { transform: translateY(18px) scale(1.08); } }
+@keyframes starField { to { background-position: 190px 210px, -160px 350px, 460px 315px; } }
+
 @media (max-width: 850px) {
   .home-screen { overflow: auto; }
   .game-menu { grid-template-columns: 1fr; max-width: 560px; }

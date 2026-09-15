@@ -18,6 +18,7 @@ const gameInfo: Record<GameId, { title: string; number: string; subtitle: string
 
 const defaults: Settings = { sound: true, rounds: 10, teamMode: false, hardMode: false };
 const emptyScores: Scores = { banana: 0, coconut: 0 };
+const emotionWorld = `${import.meta.env.BASE_URL}assets/ui/emotion-world.png`;
 
 function loadSettings(): Settings {
   try {
@@ -73,16 +74,19 @@ export default function App() {
   }
 
   return (
-    <main className="home-screen">
+    <main className="home-screen emotion-world" style={{ '--emotion-world': `url(${emotionWorld})` } as React.CSSProperties}>
       <div className="background-doodles" aria-hidden="true"><span>✦</span><span>●</span><span>☁</span><span>✦</span><span>●</span></div>
+      <div className="memory-stream" aria-hidden="true">
+        {Array.from({ length: 11 }, (_, index) => <i key={index} style={{ '--orb': index } as React.CSSProperties} />)}
+      </div>
       <header className="home-header">
-        <div className="brand-mark"><span>H</span><i>🍌</i></div>
+        <div className="brand-mark"><span>H</span><div><b>Mood Lab</b><small>Imagination HQ</small></div></div>
         <button className="settings-button" onClick={() => setView('settings')} aria-label="Open settings">⚙ <span>Settings</span></button>
       </header>
       <section className="hero-copy">
-        <p className="eyebrow">Banana Arcade presents</p>
+        <p className="eyebrow"><i /> Welcome to your emotion world <i /></p>
         <h1>HOW ARE <span>YOU?</span></h1>
-        <p>Three quick games. Eight big feelings. One brilliant sentence!</p>
+        <p>Explore the feeling. Find the words. Light up a memory!</p>
       </section>
       <section className="game-menu" aria-label="Choose a game">
         {(Object.keys(gameInfo) as GameId[]).map((id) => {
@@ -90,6 +94,7 @@ export default function App() {
           return (
             <article className={`menu-card ${info.color}`} key={id}>
               <span className="card-number">{info.number}</span>
+              <span className="card-world-tag">{id === 'snap' ? 'Quick spark' : id === 'missing' ? 'Memory vault' : 'Story portal'}</span>
               <div className="menu-art"><span>{info.icon}</span><div className={`mini-monkey mini-${id}`}><i /><b /></div></div>
               <div className="menu-card-copy"><h2>{info.title}</h2><p>{info.subtitle}</p></div>
               <button className="play-button" onClick={() => startGame(id)}>Play <span>▶</span></button>
