@@ -27,10 +27,12 @@ function preloadGameAssets(id: GameId) {
   preloadedGames.add(id);
 
   emotions.forEach((emotion) => {
-    const image = new Image();
-    image.decoding = 'async';
-    image.src = emotion.image;
-    void image.decode().catch(() => undefined);
+    emotion.images.forEach((source) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = source;
+      void image.decode().catch(() => undefined);
+    });
     const audio = new Audio(emotion.audio);
     audio.preload = 'auto';
   });
