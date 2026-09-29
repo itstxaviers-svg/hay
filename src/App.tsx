@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import EndScreen from './components/EndScreen';
 import GameLayout from './components/GameLayout';
+import LandingPage from './components/LandingPage';
 import MoodSnap from './games/MoodSnap';
 import WhatsMissing from './games/WhatsMissing';
 import MonkeyRescue from './games/MonkeyRescue';
@@ -8,7 +9,7 @@ import { emotions } from './data/emotions';
 import type { Scores, Settings } from './types';
 
 type GameId = 'snap' | 'missing' | 'rescue';
-type View = 'menu' | 'settings' | 'game' | 'end';
+type View = 'landing' | 'menu' | 'settings' | 'game' | 'end';
 
 const uiAssets = `${import.meta.env.BASE_URL}assets/ui`;
 const gameInfo: Record<GameId, { title: string; number: string; subtitle: string; character: string; color: string }> = {
@@ -61,7 +62,7 @@ function loadSettings(): Settings {
 }
 
 export default function App() {
-  const [view, setView] = useState<View>('menu');
+  const [view, setView] = useState<View>(() => window.location.hash === '#game' ? 'menu' : 'landing');
   const [game, setGame] = useState<GameId>('snap');
   const [settings, setSettings] = useState(loadSettings);
   const [scores, setScores] = useState<Scores>(emptyScores);
@@ -71,6 +72,24 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('hay-settings', JSON.stringify(settings));
   }, [settings]);
+
+  useEffect(() => {
+    const syncWithAddress = () => {
+      if (window.location.hash !== '#game') setView('landing');
+      else setView((current) => current === 'landing' ? 'menu' : current);
+    };
+    window.addEventListener('hashchange', syncWithAddress);
+    return () => window.removeEventListener('hashchange', syncWithAddress);
+  }, []);
+
+  const openGameHub = () => {
+    window.location.hash = 'game';
+    setView('menu');
+  };
+  const openLanding = () => {
+    window.location.hash = '';
+    setView('landing');
+  };
 
   const startGame = (id: GameId) => {
     preloadGameAssets(id);
@@ -89,6 +108,8 @@ export default function App() {
   const onProgress = useCallback((round: number, streak: number) => setProgress({ round, streak }), []);
 
   const CurrentGame = game === 'snap' ? MoodSnap : game === 'missing' ? WhatsMissing : MonkeyRescue;
+
+  if (view === 'landing') return <LandingPage onOpenGame={openGameHub} />;
 
   if (view === 'end') {
     return <EndScreen title={gameInfo[game].title} settings={settings} scores={scores} onAgain={playAgain} onHome={toMenu} />;
@@ -109,7 +130,7 @@ export default function App() {
         {Array.from({ length: 11 }, (_, index) => <i key={index} style={{ '--orb': index } as React.CSSProperties} />)}
       </div>
       <header className="home-header">
-        <div className="brand-mark"><span>H</span><div><b>Mood Lab</b><small>Imagination HQ</small></div></div>
+        <button className="brand-mark brand-button" onClick={openLanding} aria-label="Back to the main page"><span>H</span><div><b>Mood Lab</b><small>Imagination HQ</small></div></button>
         <button className="settings-button" onClick={() => setView('settings')} aria-label="Open settings">⚙ <span>Settings</span></button>
       </header>
       <section className="hero-copy">
