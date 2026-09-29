@@ -12,8 +12,8 @@ type View = 'menu' | 'settings' | 'game' | 'end';
 
 const uiAssets = `${import.meta.env.BASE_URL}assets/ui`;
 const gameInfo: Record<GameId, { title: string; number: string; subtitle: string; character: string; color: string }> = {
-  snap: { title: 'Mood Snap', number: '01', subtitle: 'See it. Say it. Snap!', character: `${uiAssets}/menu-characters/mood-snap.png`, color: 'yellow' },
-  missing: { title: "What's Missing?", number: '02', subtitle: 'Look, remember, speak!', character: `${uiAssets}/menu-characters/memory-vault.png`, color: 'blue' },
+  snap: { title: 'Mood Snap', number: '01', subtitle: 'See it. Say it. Snap!', character: `${uiAssets}/menu-characters/dog-snap.png`, color: 'yellow' },
+  missing: { title: "What's Missing?", number: '02', subtitle: 'Look, remember, speak!', character: `${uiAssets}/menu-characters/cat-memory.png`, color: 'blue' },
   rescue: { title: 'Monkey Rescue', number: '03', subtitle: 'Spot the clue. Name the feeling!', character: `${uiAssets}/menu-characters/story-portal.png`, color: 'coral' },
 };
 
