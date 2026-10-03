@@ -130,7 +130,10 @@ export default function App() {
         {Array.from({ length: 11 }, (_, index) => <i key={index} style={{ '--orb': index } as React.CSSProperties} />)}
       </div>
       <header className="home-header">
-        <button className="brand-mark brand-button" onClick={openLanding} aria-label="Back to the main page"><span>H</span><div><b>Mood Lab</b><small>Imagination HQ</small></div></button>
+        <div className="home-header-left">
+          <button className="moodlab-return" onClick={openLanding} aria-label="Back to Mood Lab"><span aria-hidden="true">←</span><b>Mood Lab</b></button>
+          <div className="brand-mark"><span>H</span><div><b>Mood Lab</b><small>Imagination HQ</small></div></div>
+        </div>
         <button className="settings-button" onClick={() => setView('settings')} aria-label="Open settings">⚙ <span>Settings</span></button>
       </header>
       <section className="hero-copy">

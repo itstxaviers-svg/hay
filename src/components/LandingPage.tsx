@@ -48,7 +48,7 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
       <section className="catalog-library" id="catalog">
         <div className="catalog-section-heading">
           <div><p>Библиотека</p><h2>Выберите игру</h2></div>
-          <span>1 игра</span>
+          <span>2 игры</span>
         </div>
 
         <article className="catalog-game-card">
@@ -68,6 +68,25 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
               <li>Командный режим для урока</li>
             </ul>
             <button className="catalog-card-button" onClick={onOpenGame}>Перейти к игре <span>▶</span></button>
+          </div>
+        </article>
+
+        <article className="catalog-game-card catalog-game-card-ican">
+          <div className="catalog-game-cover" style={{ '--cover-image': `url(${import.meta.env.BASE_URL}assets/catalog/ican-cover.jpg)` } as React.CSSProperties}>
+            <div className="catalog-cover-shade" />
+            <span className="catalog-free-badge">Бесплатно</span>
+            <div className="catalog-cover-title"><small>Superhero action game</small><strong>I CAN!</strong></div>
+          </div>
+          <div className="catalog-game-content">
+            <div className="catalog-tags"><span>Английский</span><span>A1</span><span>Действия</span><span>Говорение</span></div>
+            <h3>I Can!</h3>
+            <p>Супергеройская игра для тренировки фраз <b>“I can run”, “I can swim”, “I can jump”</b> и основных глаголов действия.</p>
+            <ul>
+              <li>Три режима с чтением, аудированием и памятью</li>
+              <li>Собака и кошка в супергеройском городе</li>
+              <li>Одиночная и командная игра</li>
+            </ul>
+            <a className="catalog-card-button" href="https://itstxaviers-svg.github.io/Ican/">Перейти к игре <span>▶</span></a>
           </div>
         </article>
       </section>
