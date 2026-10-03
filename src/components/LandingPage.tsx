@@ -14,8 +14,6 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
     <main className="hub-page">
       <section className="hub-intro">
         <p className="hub-eyebrow">PLAY · SPEAK · LEARN</p>
-        <h1>Games that help<br />you learn</h1>
-        <p>Choose a topic and start playing. Every game is free, classroom-ready and works on a computer, tablet or projector.</p>
       </section>
 
       <section className="hub-library" id="library">
