@@ -167,13 +167,19 @@ button:focus-visible, input:focus-visible { outline: 4px solid #358cdd; outline-
 .hub-library-heading { margin-bottom: 22px; display: flex; align-items: end; justify-content: space-between; }
 .hub-library-heading h2 { margin: 0; font-size: clamp(32px, 3vw, 45px); letter-spacing: -.045em; }
 .hub-library-heading span { color: #747687; font-size: 13px; font-weight: 800; }
-.hub-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.hub-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .hub-card { min-width: 0; overflow: hidden; border: 1px solid #dedee8; border-radius: 26px; background: white; box-shadow: 0 14px 40px rgba(31,32,59,.08); transition: transform 180ms ease, box-shadow 180ms ease; }
 .hub-card:hover { transform: translateY(-5px); box-shadow: 0 22px 50px rgba(31,32,59,.14); }
-.hub-card-cover { height: clamp(260px, 27vw, 390px); position: relative; overflow: hidden; background: #33216f; }
+.hub-card-cover { height: auto; aspect-ratio: 16 / 10; position: relative; overflow: hidden; background: #33216f; }
 .hub-card-cover.image-cover > img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .hub-card-cover.emotion-cover { isolation: isolate; background-image: linear-gradient(145deg, rgba(22,20,84,.12), rgba(30,18,83,.7)), var(--card-background); background-size: cover; background-position: center; }
 .hub-card-cover.emotion-cover::after { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 55% 45%, rgba(255,231,139,.32), transparent 34%); }
+.hub-card-cover.themed-cover { isolation: isolate; background-image: linear-gradient(145deg, rgba(8,16,42,.06), rgba(8,14,36,.48)), var(--card-background); background-size: cover; background-position: center; }
+.hub-card-cover.letters-cover { background-image: linear-gradient(145deg, rgba(11,27,75,.04), rgba(9,21,65,.24)), var(--card-background); }
+.hub-game-logo { position: absolute; z-index: 2; width: 64%; height: 88%; left: 50%; top: 52%; transform: translate(-50%, -50%); object-fit: contain; filter: drop-shadow(0 12px 17px rgba(6,12,45,.38)); }
+.hub-theme-title { position: absolute; z-index: 3; left: 25px; bottom: 23px; display: grid; color: white; text-shadow: 0 3px 0 rgba(7,13,37,.32), 0 10px 24px rgba(4,8,25,.72); }
+.hub-theme-title small { font-size: 9px; letter-spacing: .16em; font-weight: 1000; }
+.hub-theme-title strong { margin-top: 4px; font-size: clamp(28px, 2.6vw, 43px); line-height: .86; letter-spacing: -.035em; }
 .hub-cover-character { position: absolute; right: 5%; bottom: -7%; height: 83%; filter: drop-shadow(0 16px 18px rgba(16,13,62,.42)); }
 .hub-cover-title { position: absolute; z-index: 3; left: 27px; bottom: 24px; display: grid; color: white; text-shadow: 0 4px 18px rgba(14,10,53,.7); }
 .hub-cover-title small { font-size: 10px; letter-spacing: .15em; font-weight: 1000; }
@@ -192,9 +198,13 @@ button:focus-visible, input:focus-visible { outline: 4px solid #358cdd; outline-
 .hub-footer { min-height: 84px; padding: 0 max(24px, calc((100vw - 1380px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #a9abba; background: #20212f; font-size: 12px; }
 .hub-footer b { color: white; letter-spacing: .1em; }
 
+@media (max-width: 1100px) {
+  .hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (max-width: 820px) {
   .hub-grid { grid-template-columns: 1fr; }
-  .hub-card-cover { height: clamp(280px, 58vw, 430px); }
+  .hub-card-cover { height: auto; aspect-ratio: 16 / 9; }
   .hub-controls { align-items: stretch; flex-direction: column; }
   .hub-sort { align-self: flex-end; }
 }
@@ -214,7 +224,7 @@ button:focus-visible, input:focus-visible { outline: 4px solid #358cdd; outline-
   .hub-sort { width: 100%; justify-content: space-between; }
   .hub-sort select { min-width: 0; flex: 1; }
   .hub-card { border-radius: 21px; }
-  .hub-card-cover { height: 250px; }
+  .hub-card-cover { height: 250px; aspect-ratio: auto; }
   .hub-cover-character { right: -2%; }
   .hub-card-body { padding: 21px; }
   .hub-play { width: 100%; justify-content: center; }
