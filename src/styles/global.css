@@ -142,7 +142,12 @@ button:focus-visible, input:focus-visible { outline: 4px solid #358cdd; outline-
 
 /* Mood Lab library */
 .hub-page { min-height: 100vh; color: #171724; background: #f6f7fb; }
-.hub-intro { width: min(1380px, calc(100% - 48px)); margin: auto; padding: 22px 0 26px; }
+.hub-intro { width: min(1380px, calc(100% - 48px)); margin: auto; padding: 18px 0 22px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.hub-brand { display: flex; align-items: center; gap: 13px; color: #171724; text-decoration: none; }
+.hub-brand > img { width: 55px; height: 55px; border: 3px solid white; border-radius: 16px; object-fit: cover; box-shadow: 0 6px 18px rgba(34,35,65,.14); }
+.hub-brand > span { display: grid; line-height: 1; }
+.hub-brand b { font-size: 19px; letter-spacing: .08em; }
+.hub-brand small { margin-top: 6px; color: #77798a; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; font-weight: 900; }
 .hub-eyebrow { margin: 0; color: #7145ee !important; font-size: clamp(13px, 1.15vw, 17px) !important; letter-spacing: .14em; font-weight: 1000 !important; }
 
 .hub-library { width: min(1380px, calc(100% - 48px)); margin: auto; padding: 6px 0 90px; }
@@ -192,7 +197,11 @@ button:focus-visible, input:focus-visible { outline: 4px solid #358cdd; outline-
 
 @media (max-width: 560px) {
   .hub-intro, .hub-library { width: calc(100% - 30px); }
-  .hub-intro { padding: 18px 0 22px; }
+  .hub-intro { padding: 14px 0 18px; gap: 12px; }
+  .hub-brand > img { width: 48px; height: 48px; border-radius: 13px; }
+  .hub-brand b { font-size: 15px; }
+  .hub-brand small { font-size: 8px; }
+  .hub-eyebrow { font-size: 10px !important; }
   .hub-card { border-radius: 21px; }
   .hub-card-cover { height: 250px; aspect-ratio: auto; }
   .hub-cover-character { right: -2%; }

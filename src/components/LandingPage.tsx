@@ -13,6 +13,10 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
   return (
     <main className="hub-page">
       <section className="hub-intro">
+        <a className="hub-brand" href="#library" aria-label="Mood Lab home">
+          <img src={`${import.meta.env.BASE_URL}mood-lab-icon.png`} alt="Mood Lab cat and dog" />
+          <span><b>MOOD LAB</b><small>Learning games</small></span>
+        </a>
         <p className="hub-eyebrow">PLAY · SPEAK · LEARN</p>
       </section>
 
