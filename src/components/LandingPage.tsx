@@ -1,97 +1,95 @@
+import { useState } from 'react';
+
 interface LandingPageProps {
   onOpenGame: () => void;
 }
 
+type Filter = 'all' | 'free' | 'emotions' | 'abilities';
+
 const uiAssets = `${import.meta.env.BASE_URL}assets/ui`;
+const catalogAssets = `${import.meta.env.BASE_URL}assets/catalog`;
 
 export default function LandingPage({ onOpenGame }: LandingPageProps) {
+  const [filter, setFilter] = useState<Filter>('all');
+  const showEmotions = filter === 'all' || filter === 'free' || filter === 'emotions';
+  const showAbilities = filter === 'all' || filter === 'free' || filter === 'abilities';
+  const visibleCount = Number(showEmotions) + Number(showAbilities);
+
   return (
-    <main className="catalog-page">
-      <header className="catalog-header">
-        <a className="catalog-brand" href="#catalog" aria-label="Mood Lab — главная">
-          <span>H</span>
-          <div><b>MOOD LAB</b><small>English games</small></div>
+    <main className="hub-page">
+      <header className="hub-header">
+        <a className="hub-brand" href="#library" aria-label="Mood Lab home">
+          <img src={`${import.meta.env.BASE_URL}mood-lab-icon.png`} alt="Mood Lab cat and dog" />
+          <span><b>MOOD LAB</b><small>Learning games</small></span>
         </a>
-        <nav className="catalog-nav" aria-label="Навигация">
-          <a href="#catalog">Игры</a>
-          <a href="#about">О проекте</a>
+        <nav className="hub-nav" aria-label="Main navigation">
+          <a href="#library">Games</a>
+          <span>English · Ages 6+</span>
         </nav>
-        <button className="catalog-header-button" onClick={onOpenGame}>Играть</button>
       </header>
 
-      <section className="catalog-hero" id="about">
-        <div className="catalog-hero-copy">
-          <p className="catalog-kicker"><i /> Учим английский через игру</p>
-          <h1>Игры, которые помогают <span>говорить</span></h1>
-          <p className="catalog-lead">Яркие задания для урока, проектора и домашней практики. Смотрим, называем эмоции и отвечаем полным предложением.</p>
-          <div className="catalog-hero-actions">
-            <button className="catalog-primary" onClick={onOpenGame}>Открыть игру <span>→</span></button>
-            <a className="catalog-secondary" href="#catalog">Посмотреть описание</a>
-          </div>
-          <div className="catalog-facts" aria-label="Особенности игры">
-            <span><b>3</b> режима</span>
-            <span><b>8</b> эмоций</span>
-            <span><b>A1</b> уровень</span>
-          </div>
-        </div>
-
-        <div className="catalog-hero-visual" style={{ '--hero-world': `url(${uiAssets}/emotion-world.jpg)` } as React.CSSProperties} aria-hidden="true">
-          <div className="catalog-orbit orbit-one" />
-          <div className="catalog-orbit orbit-two" />
-          <img className="catalog-mascot catalog-dog" src={`${uiAssets}/menu-characters/dog-snap.png`} alt="" />
-          <img className="catalog-mascot catalog-cat" src={`${uiAssets}/menu-characters/cat-memory.png`} alt="" />
-          <span className="catalog-word word-one">HAPPY</span>
-          <span className="catalog-word word-two">GREAT!</span>
-        </div>
+      <section className="hub-intro">
+        <p className="hub-eyebrow">PLAY · SPEAK · LEARN</p>
+        <h1>Games that help<br />you learn</h1>
+        <p>Choose a topic and start playing. Every game is free, classroom-ready and works on a computer, tablet or projector.</p>
       </section>
 
-      <section className="catalog-library" id="catalog">
-        <div className="catalog-section-heading">
-          <div><p>Библиотека</p><h2>Выберите игру</h2></div>
-          <span>2 игры</span>
+      <section className="hub-controls" aria-label="Game filters">
+        <div className="hub-filters">
+          {([
+            ['all', 'All'],
+            ['free', 'Free'],
+            ['emotions', 'Emotions'],
+            ['abilities', 'Abilities'],
+          ] as [Filter, string][]).map(([id, label]) => (
+            <button key={id} className={filter === id ? 'active' : ''} onClick={() => setFilter(id)}>{label}</button>
+          ))}
         </div>
-
-        <article className="catalog-game-card">
-          <div className="catalog-game-cover" style={{ '--cover-image': `url(${uiAssets}/emotion-world.jpg)` } as React.CSSProperties}>
-            <div className="catalog-cover-shade" />
-            <span className="catalog-free-badge">Бесплатно</span>
-            <div className="catalog-cover-title"><small>Emotion speaking game</small><strong>HOW ARE YOU?</strong></div>
-            <img src={`${uiAssets}/menu-characters/story-portal.png`} alt="" />
-          </div>
-          <div className="catalog-game-content">
-            <div className="catalog-tags"><span>Английский</span><span>A1</span><span>Эмоции</span><span>Говорение</span></div>
-            <h3>How Are You?</h3>
-            <p>Три короткие игры для тренировки фраз <b>“I’m happy”, “I’m tired”, “I’m hungry”</b> и других эмоциональных состояний.</p>
-            <ul>
-              <li>Подходит для большого экрана и проектора</li>
-              <li>Озвучка, память и сюжетные подсказки</li>
-              <li>Командный режим для урока</li>
-            </ul>
-            <button className="catalog-card-button" onClick={onOpenGame}>Перейти к игре <span>▶</span></button>
-          </div>
-        </article>
-
-        <article className="catalog-game-card catalog-game-card-ican">
-          <div className="catalog-game-cover" style={{ '--cover-image': `url(${import.meta.env.BASE_URL}assets/catalog/ican-cover.jpg)` } as React.CSSProperties}>
-            <div className="catalog-cover-shade" />
-            <span className="catalog-free-badge">Бесплатно</span>
-            <div className="catalog-cover-title"><small>Superhero action game</small><strong>I CAN!</strong></div>
-          </div>
-          <div className="catalog-game-content">
-            <div className="catalog-tags"><span>Английский</span><span>A1</span><span>Действия</span><span>Говорение</span></div>
-            <h3>I Can!</h3>
-            <p>Супергеройская игра для тренировки фраз <b>“I can run”, “I can swim”, “I can jump”</b> и основных глаголов действия.</p>
-            <ul>
-              <li>Три режима с чтением, аудированием и памятью</li>
-              <li>Собака и кошка в супергеройском городе</li>
-              <li>Одиночная и командная игра</li>
-            </ul>
-            <a className="catalog-card-button" href="https://itstxaviers-svg.github.io/Ican/">Перейти к игре <span>▶</span></a>
-          </div>
-        </article>
+        <label className="hub-sort">Sort games
+          <select defaultValue="newest"><option value="newest">Newest first</option><option value="az">Name A–Z</option></select>
+        </label>
       </section>
 
-      <footer className="catalog-footer"><b>MOOD LAB</b><span>Игровая практика английского · 6+</span></footer>
+      <section className="hub-library" id="library">
+        <div className="hub-library-heading"><h2>Library</h2><span>{visibleCount} {visibleCount === 1 ? 'game' : 'games'}</span></div>
+        <div className="hub-grid">
+          {showEmotions && (
+            <article className="hub-card">
+              <div className="hub-card-cover emotion-cover" style={{ '--card-background': `url(${uiAssets}/emotion-world.jpg)` } as React.CSSProperties}>
+                <span className="hub-free">FREE</span>
+                <button className="hub-bookmark" aria-label="Save How Are You?">♡</button>
+                <div className="hub-cover-title"><small>EMOTION WORLD</small><strong>HOW ARE YOU?</strong></div>
+                <img className="hub-cover-character" src={`${uiAssets}/menu-characters/story-portal.png`} alt="" />
+              </div>
+              <div className="hub-card-body">
+                <h3>How Are You?</h3>
+                <div className="hub-tags"><span>Beginner</span><span>Speaking</span><span>Emotions</span></div>
+                <p>Explore eight feelings through quick speaking, memory and story games.</p>
+                <button className="hub-play" onClick={onOpenGame}>PLAY GAME <span>→</span></button>
+              </div>
+            </article>
+          )}
+
+          {showAbilities && (
+            <article className="hub-card">
+              <div className="hub-card-cover image-cover">
+                <img src={`${catalogAssets}/ican-cover.jpg`} alt="A superhero cat and dog discovering actions" />
+                <span className="hub-free">FREE</span>
+                <button className="hub-bookmark" aria-label="Save I Can!">♡</button>
+              </div>
+              <div className="hub-card-body">
+                <h3>I Can!</h3>
+                <div className="hub-tags"><span>Beginner</span><span>Action verbs</span><span>Abilities</span></div>
+                <p>Train “I can” phrases in three superhero missions with a cat and dog.</p>
+                <a className="hub-play" href="https://itstxaviers-svg.github.io/Ican/">PLAY GAME <span>→</span></a>
+              </div>
+            </article>
+          )}
+        </div>
+        {visibleCount === 0 && <p className="hub-empty">No games found.</p>}
+      </section>
+
+      <footer className="hub-footer"><span><b>MOOD LAB</b> · Learning games for young English speakers</span><span>Free to play</span></footer>
     </main>
   );
 }
