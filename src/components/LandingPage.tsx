@@ -30,7 +30,7 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
       </section>
 
       <section className="hub-library" id="library">
-        <div className="hub-library-heading"><h2>Library</h2><span>5 games</span></div>
+        <div className="hub-library-heading"><h2>Library</h2><span>6 games</span></div>
         <div className="hub-grid">
           {showSpeaking && (
             <article className="hub-card">
@@ -112,6 +112,20 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
               </div>
             </article>
           )}
+
+          <article className="hub-card">
+            <div className="hub-card-cover themed-cover sentence-cover" style={{ '--card-background': `url(${catalogAssets}/sentence-stacker-bg.jpg)` } as React.CSSProperties}>
+              <span className="hub-free">FREE</span>
+              <button className="hub-bookmark" aria-label="Save Sentence Stacker">♡</button>
+              <div className="hub-theme-title"><small>GRAMMAR BUILDER</small><strong>SENTENCE<br />STACKER</strong></div>
+            </div>
+            <div className="hub-card-body">
+              <h3>Sentence Stacker</h3>
+              <div className="hub-tags"><span>Grammar</span><span>Word order</span><span>Fast-paced</span></div>
+              <p>Build correct English sentences and raise a tower in a fast-paced grammar challenge.</p>
+              <a className="hub-play" href="https://itstxaviers-svg.github.io/sentst/">PLAY GAME <span>→</span></a>
+            </div>
+          </article>
         </div>
       </section>
 

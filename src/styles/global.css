@@ -169,6 +169,7 @@ button:focus-visible, input:focus-visible { outline: 4px solid #358cdd; outline-
 .hub-card-cover.emotion-cover::after { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 55% 45%, rgba(255,231,139,.32), transparent 34%); }
 .hub-card-cover.themed-cover { isolation: isolate; background-image: linear-gradient(145deg, rgba(8,16,42,.06), rgba(8,14,36,.48)), var(--card-background); background-size: cover; background-position: center; }
 .hub-card-cover.letters-cover { background-image: linear-gradient(145deg, rgba(11,27,75,.04), rgba(9,21,65,.24)), var(--card-background); }
+.hub-card-cover.sentence-cover { background-image: linear-gradient(145deg, rgba(7,28,50,.08), rgba(7,28,50,.58)), var(--card-background); background-position: center; }
 .hub-game-logo { position: absolute; z-index: 2; width: 64%; height: 88%; left: 50%; top: 52%; transform: translate(-50%, -50%); object-fit: contain; filter: drop-shadow(0 12px 17px rgba(6,12,45,.38)); }
 .hub-theme-title { position: absolute; z-index: 3; left: 25px; bottom: 23px; display: grid; color: white; text-shadow: 0 3px 0 rgba(7,13,37,.32), 0 10px 24px rgba(4,8,25,.72); }
 .hub-theme-title small { font-size: 9px; letter-spacing: .16em; font-weight: 1000; }
