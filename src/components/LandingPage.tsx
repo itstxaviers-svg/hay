@@ -1,20 +1,14 @@
-import { useState } from 'react';
-
 interface LandingPageProps {
   onOpenGame: () => void;
 }
-
-type Filter = 'all' | 'free' | 'speaking' | 'reading' | 'math';
 
 const uiAssets = `${import.meta.env.BASE_URL}assets/ui`;
 const catalogAssets = `${import.meta.env.BASE_URL}assets/catalog`;
 
 export default function LandingPage({ onOpenGame }: LandingPageProps) {
-  const [filter, setFilter] = useState<Filter>('all');
-  const showSpeaking = filter === 'all' || filter === 'free' || filter === 'speaking';
-  const showReading = filter === 'all' || filter === 'free' || filter === 'reading';
-  const showMath = filter === 'all' || filter === 'free' || filter === 'math';
-  const visibleCount = Number(showSpeaking) * 2 + Number(showReading) * 2 + Number(showMath);
+  const showSpeaking = true;
+  const showReading = true;
+  const showMath = true;
 
   return (
     <main className="hub-page">
@@ -35,25 +29,8 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
         <p>Choose a topic and start playing. Every game is free, classroom-ready and works on a computer, tablet or projector.</p>
       </section>
 
-      <section className="hub-controls" aria-label="Game filters">
-        <div className="hub-filters">
-          {([
-            ['all', 'All'],
-            ['free', 'Free'],
-            ['speaking', 'Speaking'],
-            ['reading', 'Reading'],
-            ['math', 'Math'],
-          ] as [Filter, string][]).map(([id, label]) => (
-            <button key={id} className={filter === id ? 'active' : ''} onClick={() => setFilter(id)}>{label}</button>
-          ))}
-        </div>
-        <label className="hub-sort">Sort games
-          <select defaultValue="newest"><option value="newest">Newest first</option><option value="az">Name A–Z</option></select>
-        </label>
-      </section>
-
       <section className="hub-library" id="library">
-        <div className="hub-library-heading"><h2>Library</h2><span>{visibleCount} {visibleCount === 1 ? 'game' : 'games'}</span></div>
+        <div className="hub-library-heading"><h2>Library</h2><span>5 games</span></div>
         <div className="hub-grid">
           {showSpeaking && (
             <article className="hub-card">
@@ -136,7 +113,6 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
             </article>
           )}
         </div>
-        {visibleCount === 0 && <p className="hub-empty">No games found.</p>}
       </section>
 
       <footer className="hub-footer"><span><b>MOOD LAB</b> · Learning games for young English speakers</span><span>Free to play</span></footer>
