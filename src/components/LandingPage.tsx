@@ -17,17 +17,16 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
           <img src={`${import.meta.env.BASE_URL}mood-lab-icon.png`} alt="Mood Lab cat and dog" />
           <span><b>MOOD LAB</b><small>Learning games</small></span>
         </a>
+        <section className="hub-intro">
+          <p className="hub-eyebrow">PLAY · SPEAK · LEARN</p>
+          <h1>Games that help<br />you learn</h1>
+          <p>Choose a topic and start playing. Every game is free, classroom-ready and works on a computer, tablet or projector.</p>
+        </section>
         <nav className="hub-nav" aria-label="Main navigation">
           <a href="#library">Games</a>
           <span>English · Ages 6+</span>
         </nav>
       </header>
-
-      <section className="hub-intro">
-        <p className="hub-eyebrow">PLAY · SPEAK · LEARN</p>
-        <h1>Games that help<br />you learn</h1>
-        <p>Choose a topic and start playing. Every game is free, classroom-ready and works on a computer, tablet or projector.</p>
-      </section>
 
       <section className="hub-library" id="library">
         <div className="hub-library-heading"><h2>Library</h2><span>6 games</span></div>
