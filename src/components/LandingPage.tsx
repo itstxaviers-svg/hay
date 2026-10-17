@@ -1,11 +1,7 @@
-interface LandingPageProps {
-  onOpenGame: () => void;
-}
-
 const uiAssets = `${import.meta.env.BASE_URL}assets/ui`;
 const catalogAssets = `${import.meta.env.BASE_URL}assets/catalog`;
 
-export default function LandingPage({ onOpenGame }: LandingPageProps) {
+export default function LandingPage() {
   const showSpeaking = true;
   const showReading = true;
   const showMath = true;
@@ -35,7 +31,7 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
                 <h3>How Are You?</h3>
                 <div className="hub-tags"><span>Beginner</span><span>Speaking</span><span>Emotions</span></div>
                 <p>Explore eight feelings through quick speaking, memory and story games.</p>
-                <button className="hub-play" onClick={onOpenGame}>PLAY GAME <span>→</span></button>
+                <a className="hub-play" href={`${import.meta.env.BASE_URL}#game`} target="_blank" rel="noopener noreferrer">PLAY GAME <span>→</span></a>
               </div>
             </article>
           )}
@@ -51,7 +47,7 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
                 <h3>I Can!</h3>
                 <div className="hub-tags"><span>Beginner</span><span>Action verbs</span><span>Abilities</span></div>
                 <p>Train “I can” phrases in three superhero missions with a cat and dog.</p>
-                <a className="hub-play" href="https://itstxaviers-svg.github.io/Ican/">PLAY GAME <span>→</span></a>
+                <a className="hub-play" href="https://itstxaviers-svg.github.io/Ican/" target="_blank" rel="noopener noreferrer">PLAY GAME <span>→</span></a>
               </div>
             </article>
           )}
@@ -67,7 +63,7 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
                 <h3>Reading: Right or Wrong</h3>
                 <div className="hub-tags"><span>Phonics</span><span>Reading</span><span>Timed practice</span></div>
                 <p>Read real and pseudo-words, recognise phonics patterns and choose right or wrong.</p>
-                <a className="hub-play" href="https://istmvera2092-sys.github.io/Readingmaintr/">PLAY GAME <span>→</span></a>
+                <a className="hub-play" href="https://istmvera2092-sys.github.io/Readingmaintr/" target="_blank" rel="noopener noreferrer">PLAY GAME <span>→</span></a>
               </div>
             </article>
           )}
@@ -83,7 +79,7 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
                 <h3>Learn Letters</h3>
                 <div className="hub-tags"><span>Beginner</span><span>Phonics</span><span>Handwriting</span></div>
                 <p>Practise letter sounds and handwriting in a bright magical classroom.</p>
-                <a className="hub-play" href="https://itstxaviers-svg.github.io/HPLetters/#/">PLAY GAME <span>→</span></a>
+                <a className="hub-play" href="https://itstxaviers-svg.github.io/HPLetters/#/" target="_blank" rel="noopener noreferrer">PLAY GAME <span>→</span></a>
               </div>
             </article>
           )}
@@ -99,7 +95,7 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
                 <h3>Math Practice Drills</h3>
                 <div className="hub-tags"><span>Math</span><span>Mental arithmetic</span><span>Timed practice</span></div>
                 <p>Solve quick arithmetic challenges and build speed in a magical winter arena.</p>
-                <a className="hub-play" href="https://istmvera2092-sys.github.io/math/">PLAY GAME <span>→</span></a>
+                <a className="hub-play" href="https://itstxaviers-svg.github.io/maths/" target="_blank" rel="noopener noreferrer">PLAY GAME <span>→</span></a>
               </div>
             </article>
           )}
@@ -114,7 +110,7 @@ export default function LandingPage({ onOpenGame }: LandingPageProps) {
               <h3>Sentence Stacker</h3>
               <div className="hub-tags"><span>Grammar</span><span>Word order</span><span>Fast-paced</span></div>
               <p>Build correct English sentences and raise a tower in a fast-paced grammar challenge.</p>
-              <a className="hub-play" href="https://itstxaviers-svg.github.io/sentst/">PLAY GAME <span>→</span></a>
+              <a className="hub-play" href="https://itstxaviers-svg.github.io/sentst/" target="_blank" rel="noopener noreferrer">PLAY GAME <span>→</span></a>
             </div>
           </article>
         </div>

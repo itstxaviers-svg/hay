@@ -82,10 +82,6 @@ export default function App() {
     return () => window.removeEventListener('hashchange', syncWithAddress);
   }, []);
 
-  const openGameHub = () => {
-    window.location.hash = 'game';
-    setView('menu');
-  };
   const openLanding = () => {
     window.location.hash = '';
     setView('landing');
@@ -109,7 +105,7 @@ export default function App() {
 
   const CurrentGame = game === 'snap' ? MoodSnap : game === 'missing' ? WhatsMissing : MonkeyRescue;
 
-  if (view === 'landing') return <LandingPage onOpenGame={openGameHub} />;
+  if (view === 'landing') return <LandingPage />;
 
   if (view === 'end') {
     return <EndScreen title={gameInfo[game].title} settings={settings} scores={scores} onAgain={playAgain} onHome={toMenu} />;
