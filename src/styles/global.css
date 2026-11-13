@@ -157,13 +157,16 @@ button:focus-visible, input:focus-visible { outline: 4px solid #358cdd; outline-
 .hub-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .hub-card { min-width: 0; overflow: hidden; border: 1px solid #dedee8; border-radius: 26px; background: white; box-shadow: 0 14px 40px rgba(31,32,59,.08); transition: transform 180ms ease, box-shadow 180ms ease; }
 .hub-card:hover { transform: translateY(-5px); box-shadow: 0 22px 50px rgba(31,32,59,.14); }
-.hub-card-cover { height: auto; aspect-ratio: 16 / 10; position: relative; overflow: hidden; background: #33216f; }
+.hub-card-cover { height: auto; aspect-ratio: 16 / 10; position: relative; display: block; overflow: hidden; color: inherit; background: #33216f; text-decoration: none; cursor: pointer; }
+.hub-card-cover:focus-visible { outline: 4px solid #7145ee; outline-offset: -4px; }
 .hub-card-cover.image-cover > img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .hub-card-cover.emotion-cover { isolation: isolate; background-image: linear-gradient(145deg, rgba(22,20,84,.12), rgba(30,18,83,.7)), var(--card-background); background-size: cover; background-position: center; }
 .hub-card-cover.emotion-cover::after { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 55% 45%, rgba(255,231,139,.32), transparent 34%); }
 .hub-card-cover.themed-cover { isolation: isolate; background-image: linear-gradient(145deg, rgba(8,16,42,.06), rgba(8,14,36,.48)), var(--card-background); background-size: cover; background-position: center; }
 .hub-card-cover.letters-cover { background-image: linear-gradient(145deg, rgba(11,27,75,.04), rgba(9,21,65,.24)), var(--card-background); }
 .hub-card-cover.sentence-cover { background-image: linear-gradient(145deg, rgba(7,28,50,.08), rgba(7,28,50,.58)), var(--card-background); background-position: center; }
+.hub-card-cover.time-cover { background-image: linear-gradient(145deg, rgba(3,19,35,.04), rgba(3,19,35,.52)), var(--card-background); background-position: center; }
+.hub-card-cover.restaurant-cover { background-image: linear-gradient(180deg, rgba(12,20,50,.04), rgba(12,20,50,.65)), var(--card-background); background-position: center; }
 .hub-game-logo { position: absolute; z-index: 2; width: 64%; height: 88%; left: 50%; top: 52%; transform: translate(-50%, -50%); object-fit: contain; filter: drop-shadow(0 12px 17px rgba(6,12,45,.38)); }
 .hub-theme-title { position: absolute; z-index: 3; left: 25px; bottom: 23px; display: grid; color: white; text-shadow: 0 3px 0 rgba(7,13,37,.32), 0 10px 24px rgba(4,8,25,.72); }
 .hub-theme-title small { font-size: 9px; letter-spacing: .16em; font-weight: 1000; }
@@ -173,7 +176,8 @@ button:focus-visible, input:focus-visible { outline: 4px solid #358cdd; outline-
 .hub-cover-title small { font-size: 10px; letter-spacing: .15em; font-weight: 1000; }
 .hub-cover-title strong { margin-top: 3px; font-size: clamp(29px, 3.1vw, 50px); letter-spacing: -.045em; }
 .hub-free { position: absolute; z-index: 4; top: 18px; left: 18px; padding: 8px 12px; border-radius: 9px; color: #174f39; background: #c8f4da; box-shadow: 0 5px 14px rgba(16,38,32,.14); font-size: 10px; letter-spacing: .08em; font-weight: 1000; }
-.hub-bookmark { position: absolute; z-index: 4; top: 16px; right: 16px; width: 46px; height: 46px; border: 0; border-radius: 50%; color: #353647; background: rgba(255,255,255,.93); box-shadow: 0 7px 20px rgba(20,21,45,.18); font-size: 24px; cursor: pointer; }
+.hub-cover-open { position: absolute; z-index: 4; top: 16px; right: 16px; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; color: #353647; background: rgba(255,255,255,.93); box-shadow: 0 7px 20px rgba(20,21,45,.18); font-size: 25px; transition: color 180ms ease, background 180ms ease; }
+.hub-card-cover:hover .hub-cover-open, .hub-card-cover:focus-visible .hub-cover-open { color: white; background: #7145ee; }
 .hub-card-body { padding: 24px 25px 26px; }
 .hub-card-body h3 { margin: 0 0 13px; font-size: clamp(27px, 2.3vw, 36px); letter-spacing: -.035em; }
 .hub-tags { display: flex; gap: 7px; flex-wrap: wrap; }
